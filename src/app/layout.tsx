@@ -4,13 +4,23 @@ import BackgroundMount from "@/components/BackgroundMount";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
-// runs before hydration: apply saved theme immediately, no white/black flash on load
+// runs before hydration: apply saved theme immediately, no white/black flash on load.
+// Also forces horizontal scroll back to 0 and turns off the browser's scroll
+// restoration — a stale horizontal scrollLeft from before overflow-x was locked
+// down (or the browser restoring a scroll position from a previous visit) was
+// what made the left/right margins look asymmetric: the whole page sat shifted
+// left by however many px it had scrolled, eating into the left margin and
+// opening up extra space on the right.
 const themeInitScript = `
 try {
   var t = localStorage.getItem('theme');
   if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
   }
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, window.scrollY);
+  document.documentElement.scrollLeft = 0;
+  document.body.scrollLeft = 0;
 } catch (e) {}
 `;
 
@@ -38,6 +48,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
   themeColor: "#0d1526",
 };
 

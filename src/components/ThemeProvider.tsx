@@ -16,6 +16,25 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setDark(document.documentElement.classList.contains("dark"));
   }, []);
 
+  useEffect(() => {
+    // Chrome for Android's edge-swipe "go back" gesture (right-swipe from the
+    // left edge, or left-swipe from the right edge) shows a blank white peek
+    // when there's no previous page in history — that's not our CSS/page, it's
+    // the browser's own navigation UI, so overscroll-behavior alone doesn't
+    // stop it. Block it ourselves: if a touch starts within the edge zone,
+    // preventDefault so Chrome never recognizes it as an edge-swipe.
+    const EDGE = 24;
+    const onTouchStart = (e: TouchEvent) => {
+      const x = e.touches[0]?.clientX;
+      if (x === undefined) return;
+      if (x <= EDGE || x >= window.innerWidth - EDGE) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener("touchstart", onTouchStart, { passive: false });
+    return () => document.removeEventListener("touchstart", onTouchStart);
+  }, []);
+
   const toggleDark = () => {
     setDark((v) => {
       const next = !v;

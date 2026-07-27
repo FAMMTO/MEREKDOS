@@ -30,6 +30,12 @@ html {
      body background (white block) through the gap. No bounce, no gap. Also blocks
      the browser's edge-swipe back/forward navigation gesture (-x). */
   overscroll-behavior: none;
+  /* hard stop for horizontal page scroll (a left-swipe was revealing the fixed
+     background past the page content, from anywhere on the page — not just the
+     carousels). Set here only, not duplicated on body: browsers propagate
+     body's own `overflow` to become the root scroller's behavior, so declaring
+     it on BOTH was the ambiguous combination that broke vertical scroll before. */
+  overflow-x: hidden;
 }
 
 body {
@@ -39,11 +45,6 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   overscroll-behavior: none;
-  /* belt-and-suspenders against any horizontal scroll (some element overflowing
-     100vw by a few px). Only on `body`, not `html` — overflow-x:hidden on `html`
-     too is what broke vertical scroll on mobile (iOS Safari treats that
-     combination as non-scrollable). */
-  overflow-x: hidden;
 }
 
 /* Real fix for the mobile white-block bug: `lvh` (large viewport height) is a

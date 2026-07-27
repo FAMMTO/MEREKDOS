@@ -6,7 +6,7 @@ import Location from "@/components/Location";
 
 export default function Home() {
   return (
-    <div className="relative z-10 flex min-h-screen flex-col">
+    <div className="relative z-10 flex min-h-screen flex-col overflow-x-hidden">
       <Navbar />
       <Hero />
       <Services />

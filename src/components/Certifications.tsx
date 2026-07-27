@@ -230,7 +230,7 @@ export default function Certifications() {
                   className={`absolute top-1/2 left-1/2 w-[240px] sm:w-[280px] ${
                     distance === 0 ? "" : "cursor-pointer"
                   }`}
-                  style={{ zIndex: certifications.length - distance, transformStyle: "preserve-3d" }}
+                  style={{ zIndex: certifications.length - distance }}
                   onClick={() => distance !== 0 && setActive(i)}
                   animate={{
                     x: `calc(-50% + ${offset * 150}px)`,
