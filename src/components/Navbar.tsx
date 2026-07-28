@@ -18,29 +18,20 @@ export default function Navbar() {
   const { dark, toggleDark } = useTheme();
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
-  // checkpoint only moves when direction actually flips (not every scroll tick) —
-  // comparing frame-to-frame deltas was noisy on slow scrolls, flickering hidden
-  // state back and forth as tiny diffs wobbled above/below the threshold.
-  const checkpoint = useRef(0);
+  const lastY = useRef(0);
 
   useMotionValueEvent(scrollY, "change", (raw) => {
-    // clamp: elastic overscroll (rubber-band bounce at the very top/bottom on
-    // mobile) reports oscillating/negative values past the real scroll range —
-    // feeding those straight into the checkpoint math is what caused the
-    // stutter once scroll hit its max/min.
+    // clamp: elastic overscroll (rubber-band bounce at the very top on mobile)
+    // reports oscillating/negative values past 0 — clamp before comparing.
     const y = Math.max(0, raw);
-    if (y < 120) {
-      if (hidden) setHidden(false);
-      checkpoint.current = y;
-      return;
-    }
-    if (y - checkpoint.current > 60) {
-      setHidden(true);
-      checkpoint.current = y;
-    } else if (checkpoint.current - y > 40) {
+    if (y < 80) {
       setHidden(false);
-      checkpoint.current = y;
+    } else if (y > lastY.current) {
+      setHidden(true); // scrolling down
+    } else if (y < lastY.current) {
+      setHidden(false); // scrolling up
     }
+    lastY.current = y;
   });
 
   return (

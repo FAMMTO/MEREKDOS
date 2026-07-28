@@ -89,7 +89,7 @@ export default function Services() {
         {/* mobile: plain rounded card — the skewed trapezoid clip-path only reads
             right on a wide/short box; on a narrow/tall mobile box it distorts and
             leaves unclipped gaps (white background showing through). */}
-        <div className="relative flex min-h-[460px] flex-col justify-center gap-6 rounded-2xl bg-gradient-to-b from-zinc-900 to-black px-6 py-10 ring-2 ring-brand-orange lg:hidden">
+        <div className="relative flex min-h-[420px] flex-col gap-6 rounded-2xl bg-gradient-to-b from-zinc-900 to-black px-6 py-10 ring-2 ring-brand-orange lg:hidden">
           <div className="flex items-center gap-3">
             <span className="h-0.5 w-8 bg-brand-orange" />
             <span className="text-xs font-semibold tracking-widest text-zinc-300">
@@ -119,17 +119,17 @@ export default function Services() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="flex flex-wrap gap-4 pt-2">
+          <div className="mt-auto flex flex-col gap-3 pt-2">
             <a
               href="#contacto"
-              className="flex items-center gap-2 rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+              className="flex items-center justify-center gap-2 rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
             >
               Solicitar cotización
               <ArrowUpRight className="h-4 w-4" />
             </a>
             <a
               href="#nosotros"
-              className="flex items-center gap-2 rounded-full border border-zinc-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white"
+              className="flex items-center justify-center gap-2 rounded-full border border-zinc-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white"
             >
               Conocer más
               <ArrowUpRight className="h-4 w-4" />
@@ -149,7 +149,7 @@ export default function Services() {
           </svg>
 
           <div
-            className="relative flex h-full flex-col justify-center gap-6 px-8 py-12 pr-14 sm:px-12 sm:pr-16 lg:pr-20 lg:py-16"
+            className="relative flex h-full flex-col gap-6 px-8 py-12 pr-14 sm:px-12 sm:pr-16 lg:pr-20 lg:py-16"
             style={{
               clipPath:
                 "polygon(0 0, 94% 0, 89.937% 5.906%, 83.063% 94.095%, 82% 100%, 0 100%)",
@@ -184,7 +184,7 @@ export default function Services() {
               </motion.div>
             </AnimatePresence>
 
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="mt-auto flex flex-wrap gap-4 pt-2">
               <a
                 href="#contacto"
                 className="flex items-center gap-2 rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
@@ -217,8 +217,7 @@ export default function Services() {
             type="button"
             onClick={() => go(-1)}
             aria-label="Servicio anterior"
-            className="absolute left-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-orange text-white transition-opacity hover:opacity-90"
-            style={{ transform: "translateX(-190px)" }}
+            className="absolute left-2 z-20 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-orange text-white transition-opacity hover:opacity-90 sm:left-1/2 sm:-translate-x-[190px]"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -309,8 +308,7 @@ export default function Services() {
             type="button"
             onClick={() => go(1)}
             aria-label="Siguiente servicio"
-            className="absolute left-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-orange text-white transition-opacity hover:opacity-90"
-            style={{ transform: "translateX(190px)" }}
+            className="absolute right-2 z-20 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-orange text-white transition-opacity hover:opacity-90 sm:right-auto sm:left-1/2 sm:translate-x-[190px]"
           >
             <ChevronRight className="h-5 w-5" />
           </button>

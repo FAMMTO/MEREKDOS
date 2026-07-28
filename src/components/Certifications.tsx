@@ -202,8 +202,7 @@ export default function Certifications() {
             type="button"
             onClick={() => go(-1)}
             aria-label="Certificado anterior"
-            className="absolute left-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-orange text-white transition-opacity hover:opacity-90"
-            style={{ transform: "translateX(-190px)" }}
+            className="absolute left-2 z-20 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-orange text-white transition-opacity hover:opacity-90 sm:left-1/2 sm:-translate-x-[190px]"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -305,8 +304,7 @@ export default function Certifications() {
             type="button"
             onClick={() => go(1)}
             aria-label="Siguiente certificado"
-            className="absolute left-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-orange text-white transition-opacity hover:opacity-90"
-            style={{ transform: "translateX(190px)" }}
+            className="absolute right-2 z-20 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-orange text-white transition-opacity hover:opacity-90 sm:right-auto sm:left-1/2 sm:translate-x-[190px]"
           >
             <ChevronRight className="h-5 w-5" />
           </button>

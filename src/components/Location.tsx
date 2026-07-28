@@ -44,7 +44,7 @@ export default function Location() {
     >
       {/* left: plain text block, no card/border */}
       <motion.div
-        className="relative flex min-h-[560px] flex-col justify-center gap-6 px-2 py-12 lg:py-16"
+        className="relative flex min-h-[560px] flex-col justify-center gap-6 rounded-3xl bg-white px-8 py-12 shadow-xl ring-1 ring-black/5 sm:px-10 lg:py-16 dark:bg-zinc-900 dark:ring-white/10"
         initial={{ opacity: 0, x: -70 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: false, amount: 0.3 }}
@@ -110,7 +110,7 @@ export default function Location() {
             href="https://maps.google.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex w-fit items-center gap-2 rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:border-zinc-900 dark:border-zinc-700 dark:text-white dark:hover:border-white"
+            className="flex w-fit items-center gap-2 rounded-full bg-brand-orange px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
           >
           Cómo llegar
           <ArrowUpRight className="h-4 w-4" />

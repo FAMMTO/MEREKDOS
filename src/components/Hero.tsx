@@ -53,7 +53,7 @@ export default function Hero() {
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          <div className="relative flex flex-col gap-10 px-6 py-6 pr-16">
+          <div className="relative flex flex-col gap-1 px-6 py-4 pr-16">
             <div className="flex items-center gap-3">
               <span className="h-0.5 w-8 bg-brand-orange" />
               <span className="text-xs font-semibold tracking-widest text-zinc-300">
@@ -65,8 +65,6 @@ export default function Hero() {
               Transportamos salud,{" "}
               <span className="text-brand-orange">entregamos confianza.</span>
             </h1>
-
-           
 
             <div className="flex flex-wrap gap-4 pt-2">
               <a
